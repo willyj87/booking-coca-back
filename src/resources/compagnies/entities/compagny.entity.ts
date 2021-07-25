@@ -1,11 +1,21 @@
-import { EntityHelper } from 'src/helpers/entityHelper';
-import { Column, Entity } from 'typeorm';
+import { Booker } from 'src/resources/bookers/entities/booker.entity';
+import { Room } from 'src/resources/rooms/entities/room.entity';
+import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
 
 @Entity('compagny')
-export class Compagny extends EntityHelper {
+export class Compagny {
+  @PrimaryGeneratedColumn()
+  id: number;
+
   @Column()
   name: string;
 
   @Column()
   description: string;
+
+  @OneToMany(() => Booker, (booker) => booker.compagny)
+  booker: Booker[];
+
+  @OneToMany(() => Room, (room) => room.compagny)
+  room: Room[];
 }

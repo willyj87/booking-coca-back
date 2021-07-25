@@ -1,10 +1,10 @@
 {
     "type": "postgres",
-    "host": "postgres-consensys",
+    "host": "postgres-booking-coca",
     "port": 5432,
     "username": "root",
     "password": "admin",
-    "database": "consensys",
+    "database": "booking-coca",
     "entities": [
         "dist/**/resources/**/*.entity.js"
     ],

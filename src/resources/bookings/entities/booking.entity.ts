@@ -12,8 +12,8 @@ export class Booking extends EntityHelper {
   booker: Booker;
 
   @Column('time')
-  startTime: string;
+  startTime: Date;
 
   @Column('time')
-  endTime: string;
+  endTime: Date;
 }

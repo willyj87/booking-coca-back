@@ -11,7 +11,7 @@ export class Room extends EntityHelper {
   @Column()
   description: string;
 
-  @ManyToOne(() => Compagny, (compagny) => compagny.booker)
+  @ManyToOne(() => Compagny, (compagny) => compagny.room, { eager: true })
   compagny: Compagny;
 
   @OneToMany(() => Booking, (booking) => booking.room)

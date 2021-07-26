@@ -1,19 +1,26 @@
 import { Injectable } from '@nestjs/common';
+import { InjectRepository } from '@nestjs/typeorm';
+import { Repository } from 'typeorm';
 import { CreateCompagnyDto } from './dto/create-compagny.dto';
 import { UpdateCompagnyDto } from './dto/update-compagny.dto';
+import { Compagny } from './entities/compagny.entity';
 
 @Injectable()
 export class CompagniesService {
+  constructor(
+    @InjectRepository(Compagny)
+    private compagnyRepository: Repository<Compagny>,
+  ) {}
   create(createCompagnyDto: CreateCompagnyDto) {
     return 'This action adds a new compagny';
   }
 
-  findAll() {
-    return `This action returns all compagnies`;
+  findAll(): Promise<Compagny[]> {
+    return this.compagnyRepository.find();
   }
 
-  findOne(id: number) {
-    return `This action returns a #${id} compagny`;
+  findOne(id: string): Promise<Compagny> {
+    return this.compagnyRepository.findOne(id);
   }
 
   update(id: number, updateCompagnyDto: UpdateCompagnyDto) {

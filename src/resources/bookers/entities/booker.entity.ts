@@ -8,7 +8,7 @@ export class Booker extends EntityHelper {
   @Column()
   uuid: string;
 
-  @ManyToOne(() => Compagny, (compagny) => compagny.booker)
+  @ManyToOne(() => Compagny, (compagny) => compagny.booker, { eager: true })
   compagny: Compagny;
 
   @OneToMany(() => Booking, (booking) => booking.room)

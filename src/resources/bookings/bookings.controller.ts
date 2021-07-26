@@ -6,6 +6,7 @@ import {
   Patch,
   Param,
   Delete,
+  Req,
 } from '@nestjs/common';
 import { BookingsService } from './bookings.service';
 import { CreateBookingDto } from './dto/create-booking.dto';
@@ -27,7 +28,17 @@ export class BookingsController {
 
   @Get(':id')
   findOne(@Param('id') id: string) {
-    return this.bookingsService.findOne(+id);
+    return this.bookingsService.findOne(id);
+  }
+
+  @Get('/byBooker/:booker')
+  findByBooker(@Param('booker') booker: string) {
+    return this.bookingsService.findByBooker(booker);
+  }
+
+  @Get('/byRoom/:room')
+  findByRoom(@Param('room') room: string) {
+    return this.bookingsService.findByRoom(room);
   }
 
   @Patch(':id')

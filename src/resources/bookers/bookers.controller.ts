@@ -1,4 +1,12 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/common';
+import {
+  Controller,
+  Get,
+  Post,
+  Body,
+  Patch,
+  Param,
+  Delete,
+} from '@nestjs/common';
 import { BookersService } from './bookers.service';
 import { CreateBookerDto } from './dto/create-booker.dto';
 import { UpdateBookerDto } from './dto/update-booker.dto';
@@ -19,7 +27,7 @@ export class BookersController {
 
   @Get(':id')
   findOne(@Param('id') id: string) {
-    return this.bookersService.findOne(+id);
+    return this.bookersService.findOne(id);
   }
 
   @Patch(':id')

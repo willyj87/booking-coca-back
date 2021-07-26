@@ -5,10 +5,10 @@ import { Column, Entity, ManyToOne } from 'typeorm';
 
 @Entity('bookings')
 export class Booking extends EntityHelper {
-  @ManyToOne(() => Room, (room) => room.booking)
+  @ManyToOne(() => Room, (room) => room.booking, { eager: true })
   room: Room;
 
-  @ManyToOne(() => Booker, (booker) => booker.booking)
+  @ManyToOne(() => Booker, (booker) => booker.booking, { eager: true })
   booker: Booker;
 
   @Column('time')

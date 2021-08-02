@@ -1,4 +1,4 @@
-import { Compagny } from 'src/resources/compagnies/entities/compagny.entity';
+import { Compagny } from '../../resources/compagnies/entities/compagny.entity';
 import * as Faker from 'faker';
 import { Connection } from 'typeorm';
 import { Factory, Seeder } from 'typeorm-seeding';

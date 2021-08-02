@@ -1,6 +1,6 @@
-import { EntityHelper } from 'src/helpers/entityHelper';
-import { Booker } from 'src/resources/bookers/entities/booker.entity';
-import { Room } from 'src/resources/rooms/entities/room.entity';
+import { EntityHelper } from '../../../helpers/entityHelper';
+import { Booker } from '../../bookers/entities/booker.entity';
+import { Room } from '../../rooms/entities/room.entity';
 import { Column, Entity, ManyToOne } from 'typeorm';
 
 @Entity('bookings')

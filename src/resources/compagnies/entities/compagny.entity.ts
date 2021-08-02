@@ -1,5 +1,5 @@
-import { Booker } from 'src/resources/bookers/entities/booker.entity';
-import { Room } from 'src/resources/rooms/entities/room.entity';
+import { Booker } from '../../bookers/entities/booker.entity';
+import { Room } from '../../rooms/entities/room.entity';
 import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
 
 @Entity('compagny')

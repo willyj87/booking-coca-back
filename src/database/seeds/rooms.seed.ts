@@ -1,7 +1,7 @@
-import { Room } from 'src/resources/rooms/entities/room.entity';
+import { Room } from '../../resources/rooms/entities/room.entity';
 import { getManager } from 'typeorm';
 import { Factory, Seeder } from 'typeorm-seeding';
-import { Compagny } from 'src/resources/compagnies/entities/compagny.entity';
+import { Compagny } from '../../resources/compagnies/entities/compagny.entity';
 
 export default class RoomsSeed implements Seeder {
   public async run(factory: Factory): Promise<any> {

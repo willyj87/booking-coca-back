@@ -1,7 +1,7 @@
 import { getManager } from 'typeorm';
 import { Factory, Seeder } from 'typeorm-seeding';
-import { Compagny } from 'src/resources/compagnies/entities/compagny.entity';
-import { Booker } from 'src/resources/bookers/entities/booker.entity';
+import { Compagny } from '../../resources/compagnies/entities/compagny.entity';
+import { Booker } from '../../resources/bookers/entities/booker.entity';
 
 export default class BookersSeed implements Seeder {
   public async run(factory: Factory): Promise<any> {

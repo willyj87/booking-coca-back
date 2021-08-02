@@ -21,6 +21,5 @@
         "dist/**/database/factories/**/*.js"
     ],
     "synchronize": false,
-    "logging": true
-
+    "logging": false
 }

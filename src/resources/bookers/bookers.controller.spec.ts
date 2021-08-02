@@ -1,14 +1,23 @@
 import { Test, TestingModule } from '@nestjs/testing';
-import { BookersController } from './bookers.controller';
+import { getRepositoryToken } from '@nestjs/typeorm';
 import { BookersService } from './bookers.service';
+import { Booker } from './entities/booker.entity';
+import { repositoryMockFactory } from '../../helpers/repositoryMockFactory';
+import { BookersController } from './bookers.controller';
 
 describe('BookersController', () => {
   let controller: BookersController;
 
   beforeEach(async () => {
     const module: TestingModule = await Test.createTestingModule({
-      controllers: [BookersController],
-      providers: [BookersService],
+      providers: [
+        BookersController,
+        BookersService,
+        {
+          provide: getRepositoryToken(Booker),
+          useFactory: repositoryMockFactory,
+        },
+      ],
     }).compile();
 
     controller = module.get<BookersController>(BookersController);

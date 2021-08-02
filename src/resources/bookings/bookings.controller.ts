@@ -13,7 +13,7 @@ import { AuthGuard } from '@nestjs/passport';
 import { BookingsService } from './bookings.service';
 import { CreateBookingDto } from './dto/create-booking.dto';
 import { UpdateBookingDto } from './dto/update-booking.dto';
-import { User } from 'src/decorators/user.decorator';
+import { User } from '../../decorators/user.decorator';
 
 @Controller('bookings')
 export class BookingsController {

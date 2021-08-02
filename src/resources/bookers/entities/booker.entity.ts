@@ -3,7 +3,7 @@ import { Booking } from '../../bookings/entities/booking.entity';
 import { Compagny } from '../../compagnies/entities/compagny.entity';
 import { Column, Entity, ManyToOne, OneToMany } from 'typeorm';
 
-@Entity('booker')
+@Entity('bookers')
 export class Booker extends EntityHelper {
   @Column()
   uuid: string;

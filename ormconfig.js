@@ -2,7 +2,7 @@
 const { env } = require('process');
 
 module.exports = {
-  type: 'postgres',
+  type: 'mysql',
   host: env.DATABASE_HOST,
   port: +env.DATABASE_PORT,
   username: env.DATABASE_USERNAME,
@@ -16,5 +16,5 @@ module.exports = {
   seeds: ['dist/**/database/seeds/**/*.js'],
   factories: ['dist/**/database/factories/**/*.js'],
   synchronize: false,
-  logging: false,
+  logging: true,
 };

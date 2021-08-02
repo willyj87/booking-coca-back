@@ -4,8 +4,8 @@ import { Room } from '../../resources/rooms/entities/room.entity';
 
 define(Room, (faker: typeof Faker) => {
   const room = new Room();
-  room.description = faker.lorem.paragraphs(2);
-  room.name = faker.name.title();
-  room.description = faker.lorem.paragraph(3);
+  room.description = faker.lorem.lines(1);
+  room.name = faker.random.word();
+  room.description = faker.lorem.lines(1);
   return room;
 });

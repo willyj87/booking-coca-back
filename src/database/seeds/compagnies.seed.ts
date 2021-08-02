@@ -12,7 +12,7 @@ export default class CompagniesSeed implements Seeder {
       .values([
         {
           name: 'Coke',
-          description: Faker.lorem.paragraphs(2),
+          description: Faker.lorem.lines(1),
         },
       ])
       .execute();
@@ -24,7 +24,7 @@ export default class CompagniesSeed implements Seeder {
       .values([
         {
           name: 'Pepsi',
-          description: Faker.lorem.paragraphs(2),
+          description: Faker.lorem.lines(1),
         },
       ])
       .execute();

@@ -2,7 +2,7 @@ import { Booker } from '../../bookers/entities/booker.entity';
 import { Room } from '../../rooms/entities/room.entity';
 import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
 
-@Entity('compagny')
+@Entity('compagnies')
 export class Compagny {
   @PrimaryGeneratedColumn()
   id: number;

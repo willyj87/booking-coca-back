@@ -6,7 +6,8 @@ WORKDIR /home/node/back
 
 COPY . .
 
+RUN npm i -g @nestjs/cli
+
 RUN npm install \
     && npm run build
 
-CMD ["npm","run", "start:dev"]

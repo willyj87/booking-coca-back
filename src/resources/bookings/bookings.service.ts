@@ -28,10 +28,24 @@ export class BookingsService {
       booking.room = await this.roomRepository.findOneOrFail(
         createBookingDto.room,
       );
-      booking.booker = await this.bookerRepository.findOneOrFail(booker);
-      this.bookingRepository.save(booking);
+      console.log(' uuid ', booker);
+      const bookerDb = await this.bookerRepository.find({
+        where: { uuid: booker },
+      });
+      if (bookerDb.length === 0) {
+        throw new HttpException(
+          {
+            status: HttpStatus.FORBIDDEN,
+            error: 'You are not authorize to create this resource',
+          },
+          HttpStatus.FORBIDDEN,
+        );
+      } else {
+        this.bookingRepository.save(booking);
+      }
     } catch (error) {
-      this.logger.error(error.response.error);
+      this.logger.error(error);
+      throw error;
     }
   }
 
@@ -70,7 +84,7 @@ export class BookingsService {
       booking.room = await this.roomRepository.findOne(updateBookingDto.room);
       this.bookingRepository.save(booking);
     } catch (error) {
-      this.logger.error(error.response.error);
+      this.logger.error(error);
       throw error;
     }
   }
@@ -89,7 +103,7 @@ export class BookingsService {
       }
       this.bookingRepository.delete(booking);
     } catch (error) {
-      this.logger.error(error.response.error);
+      this.logger.error(error);
       throw error;
     }
   }

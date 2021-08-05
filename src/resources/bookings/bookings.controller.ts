@@ -35,16 +35,6 @@ export class BookingsController {
     return this.bookingsService.findOne(id);
   }
 
-  @Get('/byBooker/:booker')
-  findByBooker(@Param('booker') booker: string) {
-    return this.bookingsService.findByBooker(booker);
-  }
-
-  @Get('/byRoom/:room')
-  findByRoom(@Param('room') room: string) {
-    return this.bookingsService.findByRoom(room);
-  }
-
   @UseGuards(AuthGuard('jwt'))
   @Patch(':id')
   update(

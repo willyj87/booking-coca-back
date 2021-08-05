@@ -59,16 +59,6 @@ export class BookingsService {
     return this.bookingRepository.findOne(id);
   }
 
-  findByBooker(booker: string): Promise<Booking[]> {
-    return this.bookingRepository.find({ where: { booker } });
-  }
-
-  findByRoom(room: string): Promise<Booking[]> {
-    return this.bookingRepository.find({
-      where: { room },
-    });
-  }
-
   async update(id: string, updateBookingDto: UpdateBookingDto, booker: string) {
     try {
       const booking = await this.bookingRepository.findOne(id);

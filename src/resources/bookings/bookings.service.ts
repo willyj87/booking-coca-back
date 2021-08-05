@@ -25,6 +25,8 @@ export class BookingsService {
       const booking = new Booking();
       booking.startTime = new Date(createBookingDto.startTime);
       booking.endTime = new Date(createBookingDto.endTime);
+      booking.description = createBookingDto.description;
+      booking.title = createBookingDto.title;
       booking.room = await this.roomRepository.findOneOrFail(
         createBookingDto.room,
       );

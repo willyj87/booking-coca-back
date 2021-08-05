@@ -6,7 +6,10 @@ import {
   Patch,
   Param,
   Delete,
+  UseGuards,
 } from '@nestjs/common';
+import { AuthGuard } from '@nestjs/passport';
+import { User } from 'src/decorators/user.decorator';
 import { BookersService } from './bookers.service';
 import { CreateBookerDto } from './dto/create-booker.dto';
 import { UpdateBookerDto } from './dto/update-booker.dto';
@@ -15,9 +18,10 @@ import { UpdateBookerDto } from './dto/update-booker.dto';
 export class BookersController {
   constructor(private readonly bookersService: BookersService) {}
 
-  @Post()
-  create(@Body() createBookerDto: CreateBookerDto) {
-    return this.bookersService.create(createBookerDto);
+  @UseGuards(AuthGuard('jwt'))
+  @Post('')
+  create(@Body() createBookerDto: CreateBookerDto, @User('sub') sub: string) {
+    return this.bookersService.create(createBookerDto, sub);
   }
 
   @Get()
@@ -33,6 +37,12 @@ export class BookersController {
   @Patch(':id')
   update(@Param('id') id: string, @Body() updateBookerDto: UpdateBookerDto) {
     return this.bookersService.update(+id, updateBookerDto);
+  }
+
+  @UseGuards(AuthGuard('jwt'))
+  @Get('/find/byUser')
+  findByUser(@User('sub') sub: string) {
+    return this.bookersService.findByUser(sub);
   }
 
   @Delete(':id')

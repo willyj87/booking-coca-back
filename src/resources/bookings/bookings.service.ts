@@ -30,7 +30,6 @@ export class BookingsService {
       booking.room = await this.roomRepository.findOneOrFail(
         createBookingDto.room,
       );
-      console.log(' uuid ', booker);
       const bookerDb = await this.bookerRepository.find({
         where: { uuid: booker },
       });
@@ -43,6 +42,7 @@ export class BookingsService {
           HttpStatus.FORBIDDEN,
         );
       } else {
+        booking.booker = bookerDb[0];
         this.bookingRepository.save(booking);
       }
     } catch (error) {
@@ -59,19 +59,12 @@ export class BookingsService {
     return this.bookingRepository.findOne(id);
   }
 
-  findByBooker(booker: string): Promise<Booking[]> {
-    return this.bookingRepository.find({ where: { booker } });
-  }
-
-  findByRoom(room: string): Promise<Booking[]> {
-    return this.bookingRepository.find({
-      where: { room },
-    });
-  }
-
   async update(id: string, updateBookingDto: UpdateBookingDto, booker: string) {
     try {
-      const booking = await this.bookingRepository.findOne(id);
+      const booking = await this.bookingRepository.findOne({
+        where: { id: id },
+        relations: ['room', 'booker'],
+      });
       if (booking.booker.uuid !== booker) {
         throw new HttpException(
           {
@@ -93,7 +86,9 @@ export class BookingsService {
 
   async remove(id: string, uuid: string) {
     try {
-      const booking = await this.bookingRepository.findOne(id);
+      const booking = await this.bookingRepository.findOne(id, {
+        relations: ['booker'],
+      });
       if (booking.booker.uuid !== uuid) {
         throw new HttpException(
           {
@@ -103,7 +98,7 @@ export class BookingsService {
           HttpStatus.FORBIDDEN,
         );
       }
-      this.bookingRepository.delete(booking);
+      this.bookingRepository.delete(id);
     } catch (error) {
       this.logger.error(error);
       throw error;

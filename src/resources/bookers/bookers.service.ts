@@ -39,8 +39,9 @@ export class BookersService {
   }
 
   findByUser(sub: string): Promise<Booker[]> {
-    console.log('sub', sub);
-    return this.bookerRepository.find({ where: { uuid: sub } });
+    return this.bookerRepository.find({
+      where: { uuid: sub },
+    });
   }
 
   update(id: number, updateBookerDto: UpdateBookerDto) {

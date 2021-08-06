@@ -9,6 +9,6 @@ Env variables
   DATABASE_PORT=3306
   DATABASE_USERNAME=admin
   DATABASE_PASSWORD=admin
-  AUTH0_ISSUER_URL=https://dev-9puz3nzx.eu.auth0.com/
+  AUTH0_ISSUER_URL=https://dev-9puz3nzxeu.auth0.com/
   AUTH0_AUDIENCE=http://booking-cola-api.com
 `

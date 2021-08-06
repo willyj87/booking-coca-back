@@ -3,6 +3,7 @@ import { getRepositoryToken } from '@nestjs/typeorm';
 import { BookersService } from './bookers.service';
 import { Booker } from './entities/booker.entity';
 import { repositoryMockFactory } from '../../helpers/repositoryMockFactory';
+import { Compagny } from '../compagnies/entities/compagny.entity';
 
 describe('BookersService', () => {
   let service: BookersService;
@@ -13,6 +14,10 @@ describe('BookersService', () => {
         BookersService,
         {
           provide: getRepositoryToken(Booker),
+          useFactory: repositoryMockFactory,
+        },
+        {
+          provide: getRepositoryToken(Compagny),
           useFactory: repositoryMockFactory,
         },
       ],

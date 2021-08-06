@@ -9,7 +9,7 @@ import {
   UseGuards,
 } from '@nestjs/common';
 import { AuthGuard } from '@nestjs/passport';
-import { User } from 'src/decorators/user.decorator';
+import { User } from '../../decorators/user.decorator';
 import { BookersService } from './bookers.service';
 import { CreateBookerDto } from './dto/create-booker.dto';
 import { UpdateBookerDto } from './dto/update-booker.dto';

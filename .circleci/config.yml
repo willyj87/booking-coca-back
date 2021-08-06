@@ -43,32 +43,8 @@ workflows:
   dev: 
     jobs:
       - build
-      - request-approval:
-          type: approval
-          requires:
-            - build
-          # filters: &filters-develop
-          #   branches:
-          #     only:
-          #       develop
-          #   tags:
-          #     ignore: /.*/
       - aws-ecr/build-and-push-image:
           account-url: AWS_ECR_ACCOUNT_URL
           region: AWS_DEFAULT_REGION
           repo: '${MY_APP_PREFIX}'
           tag: '${CIRCLE_SHA1}'
-          requires:
-            - request-approval
-          # filters:
-          #   <<: *filters-develop
-      # - aws-ecs/deploy-service-update:
-      #     cluster-name: 'arn:aws:ecs:eu-west-3:998243642477:cluster/consensys'
-      #     container-image-name-updates: 'container=ibegman-front,tag=${CIRCLE_SHA1}'
-      #     family: consensys-cola
-      #     service-name: ibegman-dev-front
-      #     force-new-deployment: true
-      #     requires:
-      #       - aws-ecr/build-and-push-image
-          # filters:
-          #   <<: *filters-develop

@@ -4,6 +4,7 @@ import { BookersService } from './bookers.service';
 import { Booker } from './entities/booker.entity';
 import { repositoryMockFactory } from '../../helpers/repositoryMockFactory';
 import { BookersController } from './bookers.controller';
+import { Compagny } from '../compagnies/entities/compagny.entity';
 
 describe('BookersController', () => {
   let controller: BookersController;
@@ -15,6 +16,10 @@ describe('BookersController', () => {
         BookersService,
         {
           provide: getRepositoryToken(Booker),
+          useFactory: repositoryMockFactory,
+        },
+        {
+          provide: getRepositoryToken(Compagny),
           useFactory: repositoryMockFactory,
         },
       ],

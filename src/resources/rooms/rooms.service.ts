@@ -17,11 +17,14 @@ export class RoomsService {
   }
 
   findAll(): Promise<Room[]> {
-    return this.roomRepository.find();
+    return this.roomRepository.find({ relations: ['booking', 'compagny'] });
   }
 
-  findOne(id: string): Promise<Room> {
-    return this.roomRepository.findOne(id);
+  findOne(id: string): Promise<Room[]> {
+    return this.roomRepository.find({
+      where: { id: id },
+      relations: ['booking', 'compagny'],
+    });
   }
 
   update(id: number, updateRoomDto: UpdateRoomDto) {

@@ -30,6 +30,7 @@ export class BookingsController {
     return this.bookingsService.findAll();
   }
 
+  @UseGuards(AuthGuard('jwt'))
   @Get(':id')
   findOne(@Param('id') id: string) {
     return this.bookingsService.findOne(id);

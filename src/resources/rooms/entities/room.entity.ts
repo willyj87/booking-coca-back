@@ -14,6 +14,6 @@ export class Room extends EntityHelper {
   @ManyToOne(() => Compagny, (compagny) => compagny.room, { eager: true })
   compagny: Compagny;
 
-  @OneToMany(() => Booking, (booking) => booking.room, { eager: true })
+  @OneToMany(() => Booking, (booking) => booking.room)
   booking: Booking[];
 }

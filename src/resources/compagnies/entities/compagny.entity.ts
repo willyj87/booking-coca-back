@@ -1,12 +1,11 @@
+import { Column, Entity, OneToMany } from 'typeorm';
+
 import { Booker } from '../../bookers/entities/booker.entity';
 import { Room } from '../../rooms/entities/room.entity';
-import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
+import { BaseEntity } from '../../../helpers/baseEntity';
 
 @Entity('compagnies')
-export class Compagny {
-  @PrimaryGeneratedColumn()
-  id: number;
-
+export class Compagny extends BaseEntity {
   @Column()
   name: string;
 

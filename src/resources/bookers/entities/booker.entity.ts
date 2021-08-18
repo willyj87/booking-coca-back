@@ -1,10 +1,10 @@
-import { EntityHelper } from '../../../helpers/entityHelper';
+import { BaseEntity } from '../../../helpers/baseEntity';
 import { Booking } from '../../bookings/entities/booking.entity';
 import { Compagny } from '../../compagnies/entities/compagny.entity';
 import { Column, Entity, ManyToOne, OneToMany } from 'typeorm';
 
 @Entity('bookers')
-export class Booker extends EntityHelper {
+export class Booker extends BaseEntity {
   @Column()
   uuid: string;
 

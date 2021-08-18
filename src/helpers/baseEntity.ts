@@ -6,7 +6,7 @@ import {
 } from 'typeorm';
 
 @Entity()
-export class EntityHelper {
+export class BaseEntity {
   @PrimaryGeneratedColumn('uuid')
   id: string;
 

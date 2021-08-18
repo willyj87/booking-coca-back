@@ -1,10 +1,10 @@
-import { EntityHelper } from '../../../helpers/entityHelper';
+import { BaseEntity } from '../../../helpers/baseEntity';
 import { Booker } from '../../bookers/entities/booker.entity';
 import { Room } from '../../rooms/entities/room.entity';
 import { Column, Entity, ManyToOne } from 'typeorm';
 
 @Entity('bookings')
-export class Booking extends EntityHelper {
+export class Booking extends BaseEntity {
   @ManyToOne(() => Room, (room) => room.booking, { eager: true })
   room: Room;
 

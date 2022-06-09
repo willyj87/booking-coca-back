@@ -35,3 +35,6 @@ lerna-debug.log*
 .history
 .vscode
 .env
+sonar-project.properties
+.scannerwork
+Dockerfile
